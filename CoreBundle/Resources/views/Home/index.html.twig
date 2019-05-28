@@ -1,0 +1,87 @@
+{% extends('CoreBundle::layout.html.twig') %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/core/css/indexCore.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block section %}
+          <!-- BEGIN LIST -->
+
+          <!-- BEGIN LIST ELEMENT -->
+
+            <div class="row" style="margin-top:-25px;">
+              <ul class="box">
+                <li class="col-md-6" style="margin-left:-20%;margin-right:8%;margin-bottom:30px;">
+                  <div class="circle">
+                    <div class="front front-popular">
+                      <div class="title color-1-font fa fa-smile-o fa-3x"></div>
+                      <div class="price color-1-font"><span style="font-size:2.3em;" class="total">COOPERER</span></div>
+                      <div class="description"><p>Mais que font donc les autres storybuilders?</p></div>
+                    </div><!-- end div .front -->
+                    <div class="popular color-1-font fa fa-smile-o fa-2x"></div>
+                    <div class="back color-1-bg info">
+                        <div style="font-size:2em;margin-top:20px;" class="title">REGARDER</div>
+                      <div class="description" style="margin-top:-10px;">
+                          <p style="font-size:0.95em;color:white;">Rencontrer les autres artistes<br>Echanger ses créations<br>Paticiper à "Minibook of the week"</p>
+                          <a href="{{ path('forum_homepage') }}" class="btn btn-danger" style="margin-top:0px;">GO!</a>
+                      </div><!-- end div .description -->
+                    </div><!-- end div .back color-1-bg info -->
+                  </div><!-- end div .circle -->
+                </li>
+
+          <!-- END LIST ELEMENT -->
+          <!-- BEGIN LIST ELEMENT -->
+            <li class="col-md-6" style="margin-left:60%;margin-top:-30px;">
+              <div class="circle">
+                <div class="front front-popular">
+                  <div class="title color-2-font fa fa-paper-plane fa-3x"></div>
+                  <div class="price color-2-font"><span style="font-size:2.3em;" class="total">JOUER</span></div>
+                  <div class="description"><p>Générer son minibook<br>Dessiner ensemble</p></div>
+                </div><!-- end div .front -->
+                <div class="popular color-2-font fa fa-paper-plane fa-2x"></div>
+                <div class="back color-2-bg info">
+                  <div style="font-size:2em;margin-bottom:-35px;" class="title">JOUER</div>
+                  <div class="description">
+
+                    <h3 style="font-size:1.1em;margin-bottom:-2px;font-weight:bold;text-transform:uppercase;color:white">Minibook</h3>
+                    <p style="font-size:0.9em;color:black;margin-top:5px;">Un mini-livre imprimable <br>seul ou à plusieurs</p>
+                    <h3 style="font-size:1.1em;font-weight:bold;text-transform:uppercase;color:white;margin-top:0;">Storing-pong</h3>
+                    <p style="font-size:0.9em; color:black;margin-top:-10px;">Le livres aux cases interactives</p>
+                    <a href="{{ path('game_homepage') }}" class="btn btn-danger">GO!</a>
+
+                  </div><!-- end div .description -->
+                </div><!-- end div .back color-1-bg info -->
+             <!-- end div .circle -->
+                  </div>
+            </li>
+              </ul>
+            </div>
+  <div class="row" style="margin-top:200px;">
+    <ul class="box">
+          <!-- END LIST ELEMENT -->
+          <!-- BEGIN LIST ELEMENT -->
+            <li class="col-md-12">
+              <div class="circle" style="margin-left:25%;margin-top:-20px;">
+                <div class="front front-popular">
+                  <div class="title color-3-font fa fa-paint-brush fa-3x" style="color:white"></div>
+                  <div class="price color-3-font"><span style="font-size:2.3em;" class="total">DESSINER</span></div>
+                  <div class="description"><p>Votre galerie de dessins</p></div>
+                </div><!-- end div .front -->
+                <div class="popular color-3-font fa fa-paint-brush fa-2x"></div>
+                <div class="back info" style="background-color:#e7603b;">
+                  <div style="font-size:2em;" class="title"><p style="color:white;margin-top:20px;">DESSINER</p></div>
+                  <div class="description">
+                    <p  style="color:white;margin-top:-15px;font-size:1.1em;">Montrer<br>ses dessins</p>
+                    <a href="{{ path('espace_membre_homepage') }}" class="btn btn-danger">GO!</a>
+                  </div><!-- end div .description -->
+                </div><!-- end div .back color-3-bg info -->
+              </div><!-- end div .circle -->
+            </li>
+
+
+
+          </ul>
+            </div>
+
+
+
+  {% endblock %}{# empty Twig template #}
