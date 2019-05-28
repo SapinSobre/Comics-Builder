@@ -1,0 +1,12 @@
+user_add_user:
+    path:     /adduser
+    defaults: {_controller: UserBundle:Home:addUser }
+
+user_merci:
+    path:     /merci/{username}
+    defaults: { _controller: UserBundle:Home:merci }
+    
+user_connect:
+    path:     /connect
+    defaults: { _controller: UserBundle:Security:login }
+

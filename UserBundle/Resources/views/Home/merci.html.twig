@@ -1,0 +1,19 @@
+{% extends('UserBundle::layout.html.twig') %}
+{% block meta %}
+    <meta http-equiv="refresh" content="5;{{ path('user_connect') }}" />
+{% endblock %}
+{% block boutons %}
+{% endblock %}
+{% block section %}
+    <div class="well row">
+        <section style="margin-top:-3%;" class="col-md-12">
+                    <h1 style="padding-top:40px;">Bonjour {{ user.username }}!!!</h1>
+                    <h3 style="margin-top:-20px;">Bienvenue chez Story Builder!!!</h3>
+                    <img  id="avatar" style="width:30%;margin-left:35%;margin-top:20px;" src="../../../../web/uploads/user/images/{{ user.imageUser.url }}" alt="{{ user.imageUser.alt }}"/>
+                    <h5 style="padding-top:20px;">Merci pour votre inscription!</h5>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block aside %}
+{% endblock %}

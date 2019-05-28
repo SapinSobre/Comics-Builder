@@ -1,0 +1,8 @@
+{% extends('EspaceMembreBundle::layout.html.twig') %}
+{% block section %}
+    {% if app.user.friends is not empty %}
+        {% for friend in app.user.friends %}
+            <h4>{{ friend.username }}</h4>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

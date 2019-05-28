@@ -1,0 +1,6 @@
+services:
+    user.validator.antiflood:
+        class: UserBundle\Validator\AntifloodValidator
+        arguments: ["@request_stack", "doctrine.orm.entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias:user_antiflood }

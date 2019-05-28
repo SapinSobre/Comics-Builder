@@ -1,0 +1,12 @@
+{% extends('ForumBundle::layout.html.twig') %}
+{% block forum %}
+    <h1>{{ advert.title }}</h1>
+    <h4>par {{ advert.user.username }}</h4>
+    <h2>{{ advert.content }}</h2>
+    {% for commentAdvertText in advert.commentAdvertTexts %}
+        <h4>{{ commentAdvertText.user.username }}</h4>
+        <h5>{{ commentAdvertText.title }}</h5>
+        <h6>{{ commentAdvertText.extrait }}</h6>
+        <h6>{{ commentAdvertText.createdAt|date('d/m/Y') }}</h6>
+    {% endfor %}
+{% endblock %}

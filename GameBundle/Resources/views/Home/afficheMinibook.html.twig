@@ -1,0 +1,44 @@
+{% extends('GameBundle::layout.html.twig') %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/game/css/afficheMinibook.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block bouton %}
+    <div class="bouton" style="margin-top:10px;width:50px;height:50px;border-radius:25px;background-color:darkgrey;"><a class="col-md-12 col-md-offset-1" style="right:11%;top:22%;background-color:transparent;border:none;" href="{{ path('game_homepage') }}" class="btn btn-default"><i style="color:ivory;" class="fa fa-paper-plane fa-2x"></i></a></div> 
+{% endblock %}
+
+{% block section %}
+    <section class="col-md-5">
+        <h4>MINIBOOK</h4>
+        <div class="row">
+            {% for partie in parties %}
+                {% if partie.game.name == "Minibook" %}
+                    <div class="col-sm-6 col-md-6">
+                        <div class="thumbnail">
+                            <h5>{{ partie.titre }}</h5>
+                            {% for player in partie.users %}
+                                <h3>{{ player.username }}</h3>
+                            {% endfor %}
+                            <p>
+                                <a href="{{ path('game_affiche_answer', {'partieId': partie.id}) }}" class="label label-danger" rel="tooltip" title="Zoom"><i style="color:ivory;" class="fa fa-search fa-1x"></i></a>
+                                <a href="{{ path('game_new_answer', {'partieId': partie.id }) }}" class="label label-danger" rel="tooltip" title="Zoom"><i style="color:ivory;" class="fa fa-paint-brush fa-1x"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <section class="well col-md-7">
+        <h2>Comment créer son Minibook?</h2>
+        <h4>Charger ses dessins</h4>
+        <h6>Disposez vos dessins dans les encarts prévus à cet effet.</h6>
+        <h4>Imprimer</h4>
+        <h6>Téléchargez le pdf généré par StoryBuilder.</h6>
+        <h4>Plier</h4>
+        <a href="#">Comment plier votre Minibook?</a>
+    </section>
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
+

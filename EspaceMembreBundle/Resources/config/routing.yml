@@ -1,0 +1,12 @@
+espace_membre_homepage:
+    path:     /membre
+    defaults: { _controller: EspaceMembreBundle:Home:index }
+espace_membre_add_picture:
+    path:     /addPicture
+    defaults: { _controller: EspaceMembreBundle:Home:addPicture }
+espace_membre_add_friend:
+    path:     /addFriend/{userId}
+    defaults: { _controller: EspaceMembreBundle:Friend:addFriend }
+espace_membre_friend:
+    path:     /friend
+    defaults: { _controller: EspaceMembreBundle:Friend:friend}

@@ -1,0 +1,28 @@
+game_homepage:
+    path:     /gamehome
+    defaults: { _controller: GameBundle:Home:index }
+game_affiche_minibook:
+    path:     /afficheMinibook
+    defaults: { _controller: GameBundle:Home:afficheMinibook }
+game_affiche_pong:
+    path:     /affichePong
+    defaults: { _controller: GameBundle:Home:affichePong }
+game_nouveau_minibook:
+    path:     /nouveauMinibook
+    defaults: { _controller: GameBundle:Home:nouveauMinibook }
+game_nouveau_storying_pong:
+    path:     /nouveauStoryingPong
+    defaults: { _controller: GameBundle:Home:nouveauStoryingPong }
+game_affiche_answer:
+    path:     /afficheAnswer/{partieId}
+    defaults: { _controller: GameBundle:Home:afficheAnswer }
+game_affiche_answer_storying_pong:
+    path:     /afficheAnswerStoryingPong/{partieId}
+    defaults: { _controller: GameBundle:Home:afficheAnswerStoryingPong }
+game_new_answer:
+    path:     /newAnswer/{partieId}
+    defaults: { _controller: GameBundle:Home:newAnswer }
+game_genere_minibook:
+    path:     /genereMinibook
+    defaults: { _controller: GameBundle:Minibook:GenereMinibook }
+

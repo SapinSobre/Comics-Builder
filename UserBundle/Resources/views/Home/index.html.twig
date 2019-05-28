@@ -1,0 +1,118 @@
+{% extends('UserBundle::layout.html.twig') %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/user/css/indexUser.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block section %}
+    
+    <section class="col-md-offset-1 col-md-8">
+        
+        <div class="row">
+            <div class="col-md-12">
+     
+            <div class="well" style="padding-bottom:30px;">
+                <div class="row">
+                    <div class="col-md-7 col-md-offset-1">
+                <h3 style="text-transform:uppercase;font-weight:bold;color:darkgrey;margin-top:10px;">Inscription</h3>
+                {{ form_start(form, {'attr': {'class': 'form-horizontal','id': 'form'}}) }}
+
+                {# Les erreurs générales du formulaire. #}
+                {{ form_errors(form) }}
+
+
+                {# Génération manuelle et éclatée : #}
+                <div class="form-group" style="margin-top:20px;">
+                    {# Génération du label. #}
+                    {{ form_label(form.lastName, "Prénom: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm'}}) }}
+                    <div class="col-sm-10">
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control input-sm'}}) }}
+                    </div>
+                     {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.lastName) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.name, "Nom: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm'}}) }}
+                    <div class="col-sm-10">
+                      {{ form_widget(form.name, {'attr': {'class': 'form-control input-sm'}}) }}
+                    </div>
+                    {{ form_errors(form.name) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.username, "Nom de story builder: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm', 'style': 'margin-left:-8.5%;margin-top:-10px;width:25%;'}}) }}
+                    <div class="col-sm-10" style="width:55%;">
+                      {{ form_widget(form.username, {'attr': {'class': 'form-control input-sm','style': 'width:158.5%;'}}) }}
+                    </div>
+                    {{ form_errors(form.username) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.password, "Mot de passe: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm','id': 'pass','style': 'width:25%;margin-left:-8.5%;'}}) }}
+                    <div class="col-sm-10" style="width:83.5%;margin-left:-2.5%;">
+                      {{ form_widget(form.password, {'attr': {'class': 'form-control input-sm'}}) }}
+                    </div>
+                    {{ form_errors(form.password) }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form_label(form.mail, "Email: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm'}}) }}
+                    <div class="col-sm-10">
+                      {{ form_widget(form.mail, {'attr': {'class': 'form-control input-sm'}}) }}
+                    </div>
+                    {{ form_errors(form.mail) }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form_label(form.city, "Ville: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm'}}) }}
+                    <div class="col-sm-10">
+                      {{ form_widget(form.city, {'attr': {'class': 'form-control input-sm'}}) }}
+                    </div>
+                    {{ form_errors(form.city) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.birth, "Date de naissance: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm','id': 'birth'}}) }}
+                    <div class="col-sm-10">
+                      {{ form_widget(form.birth) }}
+                    </div>
+                    {{ form_errors(form.birth) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.imageUser, "Avatar: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm','id': 'pass','style': 'width:25%;margin-left:-8.5%;margin-bottom:20px;'}}) }}
+                    <div class="col-sm-10" style="width:83.5%;margin-left:-2.5%;">
+                        {{ form_widget(form.imageUser, {'attr': {'class': 'form-control input-sm','style': 'height:0;width:30%;background-color:transparent;border:none;color:transparent;margin-top:-20px;margin-left:2%;'}}) }}
+                    </div>
+                    {{ form_errors(form.imageUser) }}
+                </div>
+                    
+                   {# Génération automatique des champs pas encore écrits.
+                     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+                   {  et tous les champs cachés (type « hidden »). #}
+                  {{ form_rest(form) }}
+
+                      {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                      {{ form_widget(form.save) }}
+
+ 
+                  {# Fermeture de la balise <form> du formulaire HTML #}
+                  {{ form_end(form) }}
+                  
+                   
+                    </div>
+                  <div class="col-md-4">
+                      <img src="{{ asset('uploads/divers/inscription.png') }}" alt="inscription" style="width:70%;margin-top:85px;" id="imageForm"/>
+                  </div>
+                   
+                </div>
+                  </div>
+            
+            </div>
+        </div>
+    </section>
+
+        
+                   
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends('GameBundle::layout.html.twig') %}
+{% block section %}
+    <h1>New answer</h1>
+    <section class="col-md-offset-1 col-md-9">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-7 col-md-offset-1">
+                            <h4>Votre case:</h4>
+                            {{ form_start(form, {'attr': {'class': 'form-horizontal','id': 'form'}}) }}
+
+                            {# Les erreurs générales du formulaire. #}
+                            {{ form_errors(form) }}
+
+
+
+
+                            {# Génération automatique des champs pas encore écrits.
+                              Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+                            {  et tous les champs cachés (type « hidden »). #}
+                            {{ form_rest(form) }}
+
+
+
+                            {# Fermeture de la balise <form> du formulaire HTML #}
+                            {{ form_end(form) }}
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ asset('uploads/divers/georgeBouillon.jpg') }}" style="width:100%;" alt="geants" id="imageForm"/>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

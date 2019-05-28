@@ -1,0 +1,80 @@
+{% extends('ForumBundle::layout.html.twig') %}
+{% block bouton %}
+    <div class="bouton" style="margin-top:10px;width:50px;height:50px;border-radius:25px;background-color:darkgrey;"><a class="col-md-12 col-md-offset-1" style="right:11%;top:22%;background-color:transparent;border:none;" href="{{ path('game_homepage') }}" class="btn btn-default"><i style="color:ivory;margin-left:-20%;" class="fa fa-paper-plane fa-2x"></i></a></div>
+{% endblock %}
+{%  block forum %}
+    <div class="col-md-12">
+        {% if delete == "true" %}
+        <div class="row">
+            <div class="col-md-12">
+                <p>Êtes-vous certain(e) de vouloir supprimer définitivement cette annonce de Story Builder?</p>
+                <p>
+                    <a href="{{ path('forum_delete_advert', {'advertId': advert.id}) }}" class="label label-danger" rel="tooltip" title="Zoom">Oui</a>
+                    <a href="{{ path('espace_membre_homepage') }}" class="label label-default" rel="tooltip" title="Zoom">Non</a>
+                </p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <section class="col-md-5">
+                <h1 style="font-size:2.2em;color:darkgrey;font-weight:bold;margin-bottom:-40px; margin-top:0;">{{ advert.title }}</h1>
+                <h3 style="margin-bottom:20px;">par <strong>{{ advert.user.username }}</strong> le {{ advert.createdAt|date("d/m/Y") }}</h3>
+                <h2 style="margin-bottom:20px;font-size:1.4em;">{{ advert.content }}</h2>
+                <img src="../../../../web/uploads/divers/{{ advert.imageAll.url }}" style="width:40%;margin-left:30%;margin-bottom:20px;" alt="{{ advert.imageAll.alt }}"/>
+                <a href="{{ path('espace_membre_add_friend', {'userId': advert.user.id}) }}" class="label label-default" rel="tooltip" title="Zoom">Contacter {{ advert.user.username }}</a>
+            </section>
+
+            <section class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well"  style="margin-top:30px;">
+                            <div class="row">
+                                <div class="col-md-7 col-md-offset-1">
+                                    <h4>Répondre à cette annonce</h4>
+                                    {{ form_start(form, {'attr': {'class': 'form-horizontal','id': 'form'}}) }}
+
+                                    {# Les erreurs générales du formulaire. #}
+                                    {{ form_errors(form) }}
+
+
+                                    {# Génération manuelle et éclatée : #}
+                                    <div class="form-group">
+                                        {# Génération du label. #}
+                                        {{ form_label(form.title, "Titre: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm'}}) }}
+                                        <div class="col-sm-10">
+                                            {# Génération de l'input. #}
+                                            {{ form_widget(form.title, {'attr': {'class': 'form-control input-sm'}}) }}
+                                        </div>
+                                        {# Affichage des erreurs pour ce champ précis. #}
+                                        {{ form_errors(form.title) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {# Génération du label. #}
+                                        {{ form_label(form.extrait, "Message: ", {'label_attr': {'class': 'col-sm-2 control-label input-sm', 'style': 'margin-right:1%;'}}) }}
+                                        <div class="col-sm-10">
+                                            {# Génération de l'input. #}
+                                            {{ form_widget(form.extrait, {'attr': {'class': 'form-control input-sm', 'style': 'width:200%;margin-left:-4%;'}}) }}
+                                        </div>
+                                        {# Affichage des erreurs pour ce champ précis. #}
+                                        {{ form_errors(form.extrait) }}
+                                    </div>
+                                    {# Génération automatique des champs pas encore écrits.
+                                      Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+                                    {  et tous les champs cachés (type « hidden »). #}
+                                    {{ form_rest(form) }}
+                                    {# Fermeture de la balise <form> du formulaire HTML #}
+                                    {{ form_end(form) }}
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="{{ asset('bundles/game/images/mathilda.jpg') }}" style="width:100%;" alt="geants" id="imageForm"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+    </div>
+{% endblock %}

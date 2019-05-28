@@ -1,0 +1,44 @@
+{% extends('ForumBundle::layout.html.twig') %}
+{% block bouton %}
+    <div class="bouton" style="margin-top:10px;width:50px;height:50px;border-radius:25px;background-color:darkgrey;"><a class="col-md-12 col-md-offset-1" style="right:11%;top:22%;background-color:transparent;border:none;" href="{{ path('game_homepage') }}" class="btn btn-default"><i style="color:ivory;margin-left:-20%;" class="fa fa-paper-plane fa-2x"></i></a></div>
+{% endblock %}
+{%  block forum %}
+    <button type="submit" class="btn btn-primary btn-xs" style="width:80%;font-size:1.05em;margin-left:10%;margin-bottom:20px;"><span class="glyphicon glyphicon-eye-open"></span><a href="{{ path('forum_add_advert') }}" style="color:white;"> Déposer une annonce</a></button>
+    <div class="col-sm-12 col-md-6">
+        <div class="row">
+            <h1 style="font-size:2em;margin-top:0;">Image cherche texte</h1>
+                {% for advert in adverts %}
+                    {% if advert.cateAdvert == 0 %}
+                                <div class="thumbnail col-md-6" style="margin-left:5%;width:45%;">
+                                    <h4 style="font-size:1.1em;margin-bottom:0;"><strong>{{ advert.title }}</strong></h4>
+                                    <img id="geants" style="width:80%;height:auto;margin-left:10%;" style="width:90%;margin-left:5%;" src="../../../../web/uploads/pictures/{{ advert.imageAll.url }}" alt="{{ advert.imageAll.alt }}"/>
+                                    <p id="rule" style="font-size:0.8em;font-weight:bold;">{{ advert.createdAt|date("d/m/Y") }}</p>
+                                    <p id="rule" style="font-size:1em;">par <strong>{{ advert.user.username }}</strong><img src="../../../../web/uploads/user/images/{{ advert.user.imageUser.url }}" style="width:30%;" alt="{{ advert.user.imageUser.alt }}"/></p>
+                                    <p>
+                                        <a href="{{ path('forum_view_one_advert',{'advertId': advert.id}) }}" class="label label-danger" rel="tooltip" title="Zoom">Détails</a>
+                                    </p>
+                                </div>
+                    {% endif %}
+                {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="row">
+            <h1 style="font-size:2em;margin-top:0;">Texte cherche image</h1>
+            {% for advert in adverts %}
+                {% if advert.cateAdvert == 1 %}
+                        <div class="thumbnail col-md-6" style="margin-left:5%;width:45%;">
+                            <h4 style="font-size:1.1em;margin-bottom:0;"><strong>{{ advert.title }}</strong></h4>
+                            <img id="geants" style="width:80%;height:auto;margin-left:10%;" src="../../../../web/uploads/pictures/{{ advert.imageAll.url }}" alt="{{ advert.imageAll.alt }}">
+
+                            <p id="rule" style="font-size:1em;">par <strong>{{ advert.user.username }}</strong><img src="../../../../web/uploads/user/images/{{ advert.user.imageUser.url }}" style="width:30%;" alt="{{ advert.user.imageUser.alt }}"/></p>
+                            <p id="rule" style="font-size:0.8em;font-weight:bold;margin-top:5px;">le {{ advert.createdAt|date("d/m/Y") }}</p>
+                            <p>
+                                <a href="{{ path('forum_view_one_advert',{'advertId':advert.id, 'delete': advert.user.username}) }}" class="label label-danger" rel="tooltip" title="Zoom">Détails</a>
+                            </p>
+                        </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

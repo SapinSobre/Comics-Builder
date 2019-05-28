@@ -1,0 +1,28 @@
+{% extends('ForumBundle::layout.html.twig') %}
+
+{% set date = app.user.createdAt|date('F','Europe/Paris') %}
+{% set monthDate = "mois."~date|lower %}
+{% trans_default_domain "Forum" %}
+
+
+{% block forum %}
+
+
+    <div class="well">
+        <h2 style="margin-top:0;padding-top:10px;text-transform:uppercase;color:darkgrey;">Les dessins du mois de {{ monthDate|trans}}</h2>
+        <h4>Il commence à faire froid, les gens se mettent à boire du chocolat chaud. J'adore marcher dans les feuilles mortes et traverser la ville bien emmitouflée dans mon manteau. <br><strong>Et vous que vous inspire l'automne?</strong><br> Postez-nous votre plus beau dessin pour le concours du mois de novembre. Le plus beau dessin sera publié sur la page d'accueil!!! Et en prime, vous recevrez des petits chocolats!!! :-D</h4>
+        <button type="submit" class="btn btn-primary btn-xs" style="border-radius:50px;width:100px;height:100px;font-size:0.9em;margin-left:65%;margin-top:-140px;"><a href="{{ path('forum_add_dessin_concours') }}" style="color:white;margin-top:-20px;"><i style="color:ivory;" class="fa fa-paint-brush fa-2x"></i><br>Poster votre <br>dessin</a></button>
+        {% if concours is not empty %}
+            <div class="row" style="margin-top:-20px;">
+                {%  for participation in concours %}
+                    <div class="col-md-6">
+                        <h3 style="text-align:center;margin-top:50px;font-weight:bold;">{{ participation.title }}</h3>
+                        <h4 style="text-align:center;">par <strong>{{ participation.user.username }}</strong></h4>
+                        <h5 style="text-align:center;margin-top:0;margin-bottom:20px;">le {{ participation.createdAt|date('d/m/Y') }}</h5>
+                        <img src="../../../../web/uploads/pictures/{{ participation.imageAll.url }}" style="width:90%;margin-left:5%;margin-top:0px;margin-bottom:20px;" alt="{{ participation.imageAll.alt }}"/>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends('GameBundle::layout.html.twig') %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/game/css/indexGame.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block section %}   
+
+            <div class="row">
+                {% for game in games %}                  
+                <div class="col-sm-12 col-md-6">            
+                    <div class="thumbnail">
+                            <h3 style="font-size:2em;padding-left:10%;">{{ game.name }}</h3>
+                            <img id="geants" style="width:65%;" src="{{ game.image.url }}" alt="{{ game.image.alt }}">
+                            <p id="rule" style="padding:15px;padding-bottom:10px;font-size:1em;">{{ game.rule }}</p>
+                            <p><strong>{{ game.nbPart }}</strong></p>
+                            <p>
+                                <a href="{{ path('espace_membre_homepage') }}" class="label label-danger" rel="tooltip" title="Zoom">Vos parties</a>
+                                {% if game.name == "Minibook" %}
+                                    <a href="{{ path('game_affiche_minibook') }}" class="label label-default" rel="tooltip" title="Download now">Parties en cours</a>
+                                    <a href="{{ path('game_nouveau_minibook') }}" class="label label-default" rel="tooltip" title="Download now">Nouvelle partie</a>
+                                {% endif %}
+                                {% if game.name == "Storying-pong" %}
+                                    <a href="{{ path('game_affiche_pong') }}" class="label label-default" rel="tooltip" title="Download now">Parties en cours</a>
+                                    <a href="{{ path('game_nouveau_storying_pong') }}" class="label label-default" rel="tooltip" title="Download now">Nouvelle partie</a>
+                                {% endif %}
+                            </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+{% endblock %}
+
+

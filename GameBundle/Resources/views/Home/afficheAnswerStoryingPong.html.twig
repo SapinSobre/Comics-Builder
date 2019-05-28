@@ -1,0 +1,23 @@
+{% extends('GameBundle::layout.html.twig') %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/game/css/afficheMinibook.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block bouton %}
+    <div class="bouton" style="margin-top:10px;width:50px;height:50px;border-radius:25px;background-color:darkgrey;"><a class="col-md-12 col-md-offset-1" style="right:11%;top:22%;background-color:transparent;border:none;" href="{{ path('game_homepage') }}" class="btn btn-default"><i style="color:ivory;" class="fa fa-paper-plane fa-2x"></i></a></div>
+{% endblock %}
+{% block section %}
+    <div class="row">
+        <div class="well col-md-12">
+            <h4 style="color:darkslateblue;">STORYING-PONG</h4>
+            <div class="row">
+                    {% for answer in partie.answers %}
+                        <div class="col-md-3">
+                            <img class="draggable" src="../../../../web/uploads/pictures/{{ answer.imageAll.url }}" alt="{{ answer.imageAll.alt }}"/>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-xs" style="width:70%;font-size:1.05em;margin-left:15%;margin-bottom:20px;"><a href="{{ path('game_affiche_pong') }}" style="color:white;"><i style="color:ivory;" class="fa fa-paint-brush fa-1x"></i> Retour parties Storying-pong</a></button>
+    </div>
+{% endblock %}

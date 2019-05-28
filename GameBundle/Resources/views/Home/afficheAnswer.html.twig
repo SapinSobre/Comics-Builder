@@ -1,0 +1,71 @@
+{% extends('GameBundle::layout.html.twig') %}
+
+{% block bouton %}
+    <div class="bouton" style="margin-top:10px;width:50px;height:50px;border-radius:25px;background-color:darkgrey;"><a class="col-md-12 col-md-offset-1" style="right:11%;top:22%;background-color:transparent;border:none;" href="{{ path('game_homepage') }}" class="btn btn-default"><i style="color:ivory;" class="fa fa-paper-plane fa-2x"></i></a></div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .dropper {
+            display:inline-block;
+            width: 60%;
+            height: auto;
+            border-radius: 10%;
+            transition: all 200ms linear;
+        }
+
+        #reception {
+            min-height:250px;
+            height:auto;
+            width:100%;
+        }
+
+        .drop_hover {
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
+        }
+
+        .draggable {
+            display: inline-block;
+            cursor: move;
+            transition: all 200ms linear;
+            user-select: none;
+        }
+        div#reception img{
+            width:25%;
+            padding-right:5%;
+        }
+        div#emission img{
+            width:100%;
+            height:auto;
+            margin:0;
+            padding:0;
+        }
+    </style>
+{% endblock %}
+
+{% block section %}
+    <h2 style="text-transform:uppercase;margin-bottom:30px;">{{ partie.titre }}</h2>
+
+    <div class="row">
+        <div class="well col-md-12">
+            <h4 style="color:darkslateblue;">Faites glisser un de vos dessins téléchargés vers la case de votre choix.</h4>
+                    <div class="row">
+                        <div class="dropper" id="emission">
+                            {% for answer in partie.answers %}
+                                <div class="col-md-3">
+                                    <img class="draggable" src="../../../../web/uploads/pictures/{{ answer.imageAll.url }}" alt="{{ answer.imageAll.alt }}"/>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="dropper" id="reception">
+                        </div>
+                    </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-xs" style="width:70%;font-size:1.05em;margin-left:15%;margin-bottom:20px;"><a href="{{ path('game_genere_minibook') }}" style="color:white;"><i style="color:ivory;" class="fa fa-paint-brush fa-1x"></i> Générer votre Minibook!</a></button>
+    </div>
+
+{%  endblock %}
+{% block javascripts %}
+    <script src="../../../../web/bundles/game/js/pageMinibook.js" type="text/javascript"/>
+{% endblock %}

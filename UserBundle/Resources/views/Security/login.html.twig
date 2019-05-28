@@ -1,0 +1,32 @@
+{% extends('UserBundle::layout.html.twig') %}
+{% block section %}
+
+        <div class="well col-md-offset-1 col-md-8" style="border-radius:20px;">
+          {# S'il y a une erreur, on l'affiche dans un joli cadre #}
+                <div class="row">
+                    <div class="col-md-8" style="margin-left:3%;">
+                        <h3 style="text-align:center;margin-top:10px;text-transform:uppercase;text-weight:bold;color:darkgrey;">Connexion</h3>
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.message }}</div>
+                        {% endif %}
+                        {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
+                        <form class="form-horizontal" action="{{ path('login_check') }}" method="post">
+                            <label class="control-label"for="username" style="margin-bottom:10px;">Nom de Storybuilder :</label>
+                            <input class="control-label" type="text" id="username" name="_username" value="{{ last_username }}" style="margin-bottom:10px;"/>
+                            <label class="control-label"for="password" style="margin-bottom:10px;">Mot de passe :</label>
+                            <input class="control-label" type="password" id="password" name="_password" style="margin-bottom:10px;margin-bottom:20px;"/>
+                            <br/>
+                            <input type="submit" value="Envoyer" style="width:20%;margin-left:40%;"/>
+                        </form>
+                    </div>
+                    <div class="col-md-2">
+                        <img src="../../../../web/uploads/divers/pilesLivres.jpg" alt="pilesLivres" style="width:180%;margin-left:-18%;margin-top:15px;"/>
+                    </div>
+                </div>
+        </div>
+
+
+{% endblock %}
+
+
+

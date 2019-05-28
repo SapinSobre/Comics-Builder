@@ -1,0 +1,34 @@
+forum_homepage:
+    path:     /forum
+    defaults: { _controller: ForumBundle:Home:index }
+forum_add_advert:
+    path:     /addadvert
+    defaults: { _controller: ForumBundle:Advert:addAdvert }
+forum_view_advert:
+    path:     /viewAdvert
+    defaults: { _controller: ForumBundle:Advert:viewAdvert }
+forum_view_one_advert:
+    path:     /viewoneadvert/{advertId}/{delete}
+    defaults:
+        _controller: ForumBundle:Advert:viewOneAdvert
+        delete: false
+forum_delete_advert:
+    path:     /deleteadvert/{advertId}
+    defaults: { _controller: ForumBundle:Advert:deleteAdvert }
+    requirements:
+            advertId: '\d+'
+forum_edit_advert:
+    path:     /editadvert/{advertId}
+    defaults: { _controller: ForumBundle:Advert:editAdvert }
+forum_view_comments_one_advert:
+    path:     /view/comments/one/advert/{advertId}
+    defaults: { _controller: ForumBundle:Comment:viewCommentsOneAdvert }
+forum_add_comment:
+    path:     /addcomment
+    defaults: { _controller: ForumBundle:Comment:addComment }
+forum_concours:
+    path:     /concours
+    defaults: { _controller: ForumBundle:DessinMois:concours }
+forum_add_dessin_concours:
+    path:     /adddessinconcours
+    defaults: { _controller: ForumBundle:DessinMois:addDessinConcours }

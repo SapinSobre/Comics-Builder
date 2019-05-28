@@ -1,0 +1,93 @@
+{% extends('ForumBundle::layout.html.twig') %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/forum/css/indexForum.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block forum %}
+    <div class="col-md-5">
+        <div class="row" style="margin-bottom:-5px;margin-top:-20px;padding-top:0;">
+            <ul class="box">
+                <li class="col-md-6" style="margin-right:5%;">
+                    <div class="circle">
+                        <div class="front front-popular">
+                            <div class="title color-1-font fa fa-heart-o fa-3x"></div>
+                            <div class="price color-1-font" style="font-size:0.8em;"><span style="font-size:2.3em;" class="total">RENCONTRER</span></div>
+                            <div class="description" style="font-size:1.2em;color:darkgrey;font-weight:bold;">Dessin cherche texte<br>Texte cherche dessin</div>
+                        </div><!-- end div .front -->
+                        <div class="popular color-1-font fa fa-heart-o fa-2x"></div>
+                        <div class="back color-1-bg info">
+                            <div style="font-size:2em;margin-top:20px;" class="title">REGARDER</div>
+                            <div class="description" style="margin-top:-10px;">
+                                <a href="{{ path('forum_add_advert') }}" class="btn btn-default">Déposer une annonce</a>
+                                <a style="width:72%;margin-top:10px;" href="{{ path('forum_view_advert') }}" class="btn btn-default">Consulter les annonces</a>
+                            </div><!-- end div .description -->
+                        </div><!-- end div .back color-1-bg info -->
+                    </div><!-- end div .circle -->
+                </li>
+                            <!-- END LIST ELEMENT -->
+                            <!-- BEGIN LIST ELEMENT -->
+                <li class="col-md-6">
+                    <div class="circle">
+                        <div class="front front-popular">
+                            <div class="title color-2-font fa fa-question fa-3x"></div>
+                            <div class="price color-2-font"><span style="font-size:1.95em;" class="total">COMPRENDRE</span></div>
+                            <div class="description" style="font-size:1.2em;color:darkgrey;font-weight:bold;">Forums</div>
+                        </div><!-- end div .front -->
+                        <div class="popular color-2-font fa fa-question fa-2x"></div>
+                        <div class="back color-2-bg info">
+                            <div style="font-size:2em;" class="title">FORUMS</div>
+                            <div class="description">
+                                <a href="#" class="btn btn-default">Questions techniques dessin</a>
+                                <a style="width:72%;margin-top:10px;" href="#" class="btn btn-default">Vos autres passions</a>
+                            </div><!-- end div .description -->
+                        </div><!-- end div .back color-1-bg info -->
+                        <!-- end div .circle -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <ul class="box" style="margin-left:25%;">
+                <!-- END LIST ELEMENT -->
+                <!-- BEGIN LIST ELEMENT -->
+                <li class="col-md-12">
+                    <div class="circle">
+                        <div class="front front-popular">
+                            <div class="title color-3-font fa fa-paint-brush fa-3x" style="color:white"></div>
+                            <div class="price color-3-font"><span style="font-size:1.95em;" class="total">OSER</span></div>
+                            <div class="description"><p>Votre galerie de dessins</p></div>
+                        </div><!-- end div .front -->
+                        <div class="popular color-3-font fa fa-paint-brush fa-2x"></div>
+                        <div class="back info" style="background-color:#e7603b;">
+                            <div style="font-size:2em;" class="title"><p style="color:white;margin-top:20px;">MONTRER</p></div>
+                            <div class="description">
+                                <p  style="color:white;margin-top:-15px;font-size:1.1em;">Montrer<br>ses dessins</p>
+                                <a href="{{ path('espace_membre_homepage') }}" class="btn btn-danger">GO!</a>
+                            </div><!-- end div .description -->
+                        </div><!-- end div .back color-3-bg info -->
+                    </div><!-- end div .circle -->
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block concours %}
+    <div class="col-md-4" style="padding-left:5%;">
+        <h2 style="margin-top:0;padding-top:10px;text-transform:uppercase;color:darkgrey;">Les dessins du mois</h2>
+        {% if concours is not empty %}
+            <div class="row" style="margin-top:-20px;">
+                {%  for participation in concours %}
+                    <div class="col-md-12">
+                        <h3 style="text-align:center;margin-top:50px;font-weight:bold;">{{ participation.title }}</h3>
+                        <h4 style="text-align:center;">par <strong>{{ participation.user.username }}</strong></h4>
+                        <h5 style="text-align:center;margin-top:0;margin-bottom:20px;">le {{ participation.createdAt|date('d/m/Y') }}</h5>
+                        <img src="../../../../web/uploads/pictures/{{ participation.imageAll.url }}" style="width:90%;margin-left:5%;margin-top:0px;margin-bottom:20px;" alt="{{ participation.imageAll.alt }}"/>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
